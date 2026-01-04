@@ -19,10 +19,18 @@ $errore = '';
 $selezionaLettere = isset($_GET['letter']) ? $_GET['letter'] : '';
 $selezionaNumeri = isset($_GET['number']) ? $_GET['number'] : '';
 $selezionaSimboli = isset($_GET['symbols']) ? $_GET['symbols'] : '';
+$pswLength = isset($_GET['pswlength']) ? $_GET['pswlength'] : '';
 $validazioneDati = validaCheckBox($selezionaLettere, $selezionaNumeri, $selezionaSimboli);
-//controllo con empty che è una funzione che guarda se una variabile è vuota o meno 
-if (!empty($_GET) && !$validazioneDati) {
-    $errore = 'Devi selezionare almeno una tipologia di caratteri!';
+
+// Validazione lunghezza password e presenza selezione checkbox
+//controllo con empty che è una funzione che guarda se una variabile è vuota o meno
+//controllo con is_numeric che è una funzione che guarda che l'utente abbia rispettato il range della lunghezza numerica
+if (!empty($_GET)) {
+    if (!$validazioneDati) {
+        $errore = 'Devi selezionare almeno una tipologia di caratteri!';
+    } elseif (!is_numeric($pswLength) || $pswLength < 12 || $pswLength > 15) {
+        $errore = 'La lunghezza della password deve essere un numero tra 12 e 15.';
+    }
 }
 ?>
 
