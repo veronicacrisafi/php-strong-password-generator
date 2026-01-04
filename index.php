@@ -14,6 +14,19 @@ function validaCheckBox($selezionaLettere, $selezionaNumeri, $selezionaSimboli)
 }
 ?>
 
+<?php
+$errore = '';
+$selezionaLettere = isset($_GET['letter']) ? $_GET['letter'] : '';
+$selezionaNumeri = isset($_GET['number']) ? $_GET['number'] : '';
+$selezionaSimboli = isset($_GET['symbols']) ? $_GET['symbols'] : '';
+$validazioneDati = validaCheckBox($selezionaLettere, $selezionaNumeri, $selezionaSimboli);
+
+//controllo con empty che è una funzione che guarda se una variabile è vuota o meno 
+if (!empty($_GET) && !$validazioneDati) {
+    $errore = 'Devi selezionare almeno una tipologia di caratteri!';
+}
+?>
+
 <!DOCTYPE html>
 <html lang="it">
 
