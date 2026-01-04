@@ -1,3 +1,10 @@
+<?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+?>
+
+
 <!DOCTYPE html>
 <html lang="it">
 
@@ -35,21 +42,29 @@
                             <label for="checkno" class="form-check-label">No</label>
                         </div>
                         <!-- Per le checkbox non serve dare lo stesso name in quanto l'utente può dare scelte multiple in questo modo php riceve le varie scelte selezionate-->
-
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="" id="letter" name="letter">
+                            <?php
+                            $selezionaLettere = isset($_GET['letter']) ? $_GET['letter'] : ''
+                            ?>
                             <label class="form-check-label" for="letter">
                                 Lettere
                             </label>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="" id="number" name="number">
+                            <?php
+                            $selezionaNumeri = isset($_GET['number']) ? $_GET['number'] : ''
+                            ?>
                             <label class="form-check-label" for="number">
                                 Numeri
                             </label>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="" id="symbols" name="symbols">
+                            <?php
+                            $selezionaSimboli = isset($_GET['symbols']) ? $_GET['symbols'] : ''
+                            ?>
                             <label class="form-check-label" for="symbols">
                                 Simboli
                             </label>
