@@ -25,6 +25,7 @@
                         <label for="">Consenti ripetizione di uno o più caratteri: </label>
                     </div>
                     <div class="col-auto">
+                        <!-- Per le checkradio è importante dare lo stesso name in quanto fanno parte della stessa scelta e l'utente può scegliere solo una delle due e così php riceve solo il valore selezionato-->
                         <div class="form-check">
                             <input type="radio" class="form-check-input" name="checkradio" id="checkyes">
                             <label for="checkyes" class="form-check-label">Sì</label>
@@ -33,6 +34,8 @@
                             <input type="radio" class="form-check-input" name="checkradio" id="checkno" checked>
                             <label for="checkno" class="form-check-label">No</label>
                         </div>
+                        <!-- Per le checkbox non serve dare lo stesso name in quanto l'utente può dare scelte multiple in questo modo php riceve le varie scelte selezionate-->
+
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="" id="letter" name="letter">
                             <label class="form-check-label" for="letter">
