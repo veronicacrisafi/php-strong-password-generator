@@ -34,6 +34,9 @@ if (!empty($_GET)) {
 }
 ?>
 
+<?php
+?>
+
 <!DOCTYPE html>
 <html lang="it">
 
@@ -59,7 +62,7 @@ if (!empty($_GET)) {
                     <label for="pswlength">Lunghezza password</label>
                 </div>
                 <div class="col-auto">
-                    <input type="password" id="pswlength" class="form-control" name="pswlength">
+                    <input type="password" id="pswlength" class="form-control" name="pswlength" value="pswlength">
                 </div>
                 <div class="row g-3 align-item-center justify-content-center">
                     <div class="col-auto">
