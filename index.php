@@ -4,6 +4,15 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 ?>
 
+<?php
+function validaCheckBox($selezionaLettere, $selezionaNumeri, $selezionaSimboli)
+{
+    if ($selezionaLettere || $selezionaNumeri || $selezionaSimboli) {
+        return true;
+    }
+    return false;
+}
+?>
 
 <!DOCTYPE html>
 <html lang="it">
