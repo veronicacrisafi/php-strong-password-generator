@@ -20,7 +20,6 @@ $selezionaLettere = isset($_GET['letter']) ? $_GET['letter'] : '';
 $selezionaNumeri = isset($_GET['number']) ? $_GET['number'] : '';
 $selezionaSimboli = isset($_GET['symbols']) ? $_GET['symbols'] : '';
 $validazioneDati = validaCheckBox($selezionaLettere, $selezionaNumeri, $selezionaSimboli);
-
 //controllo con empty che è una funzione che guarda se una variabile è vuota o meno 
 if (!empty($_GET) && !$validazioneDati) {
     $errore = 'Devi selezionare almeno una tipologia di caratteri!';
@@ -41,6 +40,11 @@ if (!empty($_GET) && !$validazioneDati) {
     <div class="container">
         <h1 class="text-center">Strong Password Generator</h1>
         <h2 class="text-center">Genera una password sicura</h2>
+        <?php
+        if ($errore) {
+            echo '<div class="alert alert-danger">' . $errore .  '</div>';
+        }
+        ?>
         <form action="" method="GET">
             <div class="row g-3 align-items-center justify-content-center">
                 <div class="col-auto">
@@ -65,7 +69,7 @@ if (!empty($_GET) && !$validazioneDati) {
                         </div>
                         <!-- Per le checkbox non serve dare lo stesso name in quanto l'utente può dare scelte multiple in questo modo php riceve le varie scelte selezionate-->
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="letter" name="letter">
+                            <input class="form-check-input" type="checkbox" value="letter" id="letter" name="letter">
                             <?php
                             $selezionaLettere = isset($_GET['letter']) ? $_GET['letter'] : ''
                             ?>
@@ -74,7 +78,7 @@ if (!empty($_GET) && !$validazioneDati) {
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="number" name="number">
+                            <input class="form-check-input" type="checkbox" value="number" id="number" name="number">
                             <?php
                             $selezionaNumeri = isset($_GET['number']) ? $_GET['number'] : ''
                             ?>
@@ -83,7 +87,7 @@ if (!empty($_GET) && !$validazioneDati) {
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="symbols" name="symbols">
+                            <input class="form-check-input" type="checkbox" value="symbols" id="symbols" name="symbols">
                             <?php
                             $selezionaSimboli = isset($_GET['symbols']) ? $_GET['symbols'] : ''
                             ?>
