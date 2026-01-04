@@ -35,7 +35,25 @@ if (!empty($_GET)) {
 ?>
 
 <?php
+function generatorePassword($pswLength, $checkRadioRepeat, $useLetter, $useNumber, $useSymbol)
+{
+    $caratteriPossibili = '';
+    $letter = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $number = '123456789';
+    $symbol = '!"#$%&\'()*+,-./:;<=>?@[]^_`{|}~';
+    if ($useLetter) {
+        $caratteriPossibili .=  $letter;
+    }
+    if ($useNumber) {
+        $caratteriPossibili .= $number;
+    }
+    if ($useSymbol) {
+        $caratteriPossibili .= $symbol;
+    }
+    $arrayCaratteri = str_split($caratteriPossibili);
+}
 ?>
+
 
 <!DOCTYPE html>
 <html lang="it">
