@@ -86,8 +86,10 @@ function validaCheckBox($selezionaLettere, $selezionaNumeri, $selezionaSimboli)
                     <button type="submit" class="btn btn-primary btn-sm">Invia</button>
                     <button type="submit" class="btn btn-secondary btn-sm">Annulla</button>
                 </div>
-
             </div>
+            <?php
+            $validazioneDati = validaCheckBox($selezionaLettere, $selezionaNumeri, $selezionaSimboli);
+            ?>
         </form>
     </div>
 </body>
