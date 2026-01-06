@@ -61,10 +61,21 @@ function generatorePassword($pswLength, $checkRadioRepeat, $useLetter, $useNumbe
     $arrayCaratteri = str_split($caratteriPossibili);
 
     $password = '';
-    for ($i = 0; $i < $pswLength; $i++) {
-        $indiceCasuale = random_int(0, count($arrayCaratteri) - 1);
-        $carattere = $arrayCaratteri[$indiceCasuale];
-        $password .= $carattere;
+    if ($checkRadioRepeat) {
+        // Caso: ripetizione consentita
+        for ($i = 0; $i < $pswLength; $i++) {
+            $indiceCasuale = random_int(0, count($arrayCaratteri) - 1);
+            $carattere = $arrayCaratteri[$indiceCasuale];
+            $password .= $carattere;
+        }
+    } else {
+        // Caso: ripetizione NON consentita
+        if ($pswLength > count($arrayCaratteri)) {
+            // Non ci sono abbastanza caratteri unici
+            return '';
+        }
+        shuffle($arrayCaratteri); // Mischia l'array
+        $password = implode('', array_slice($arrayCaratteri, 0, $pswLength));
     }
     return $password;
 }
