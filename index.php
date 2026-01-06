@@ -116,14 +116,14 @@ function generatorePassword($pswLength, $checkRadioRepeat, $useLetter, $useNumbe
                     <div class="col-auto">
                         <!-- Per le checkradio è importante dare lo stesso name in quanto fanno parte della stessa scelta e l'utente può scegliere solo una delle due e così php riceve solo il valore selezionato-->
                         <div class="form-check">
-                            <input type="radio" class="form-check-input" name="checkradio" id="checkyes" value="Sì">
+                            <input type="radio" class="form-check-input" name="checkradio" id="checkyes" value="Sì" <?php if (isset($_GET['checkradio']) && $_GET['checkradio'] === 'Sì') echo 'checked'; ?>>
                             <?php
                             $checkRipetizioneCaratteri = (isset($_GET['checkradio']) && $_GET['checkradio'] === 'Sì');
                             ?>
                             <label for="checkyes" class="form-check-label">Sì</label>
                         </div>
                         <div class="form-check">
-                            <input type="radio" class="form-check-input" name="checkradio" id="checkno" value="No">
+                            <input type="radio" class="form-check-input" name="checkradio" id="checkno" value="No" <?php if (isset($_GET['checkradio']) && $_GET['checkradio'] === 'No') echo 'checked'; ?>>
                             <?php
                             $checkNonRipetizioneCaratteri = (isset($_GET['checkradio']) && $_GET['checkradio'] === 'No')
                             ?>
@@ -131,7 +131,7 @@ function generatorePassword($pswLength, $checkRadioRepeat, $useLetter, $useNumbe
                         </div>
                         <!-- Per le checkbox non serve dare lo stesso name in quanto l'utente può dare scelte multiple in questo modo php riceve le varie scelte selezionate-->
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="letter" id="letter" name="letter">
+                            <input class="form-check-input" type="checkbox" value="letter" id="letter" name="letter" <?php if (!empty($selezionaLettere)) echo 'checked'; ?>>
                             <?php
                             $selezionaLettere = isset($_GET['letter']) ? $_GET['letter'] : ''
                             ?>
@@ -140,7 +140,7 @@ function generatorePassword($pswLength, $checkRadioRepeat, $useLetter, $useNumbe
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="number" id="number" name="number">
+                            <input class="form-check-input" type="checkbox" value="number" id="number" name="number" <?php if (!empty($selezionaNumeri)) echo 'checked'; ?>>
                             <?php
                             $selezionaNumeri = isset($_GET['number']) ? $_GET['number'] : ''
                             ?>
@@ -149,7 +149,7 @@ function generatorePassword($pswLength, $checkRadioRepeat, $useLetter, $useNumbe
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="symbols" id="symbols" name="symbols">
+                            <input class="form-check-input" type="checkbox" value="symbols" id="symbols" name="symbols" <?php if (!empty($selezionaSimboli)) echo 'checked'; ?>>
                             <?php
                             $selezionaSimboli = isset($_GET['symbols']) ? $_GET['symbols'] : ''
                             ?>
