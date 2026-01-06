@@ -107,7 +107,7 @@ function generatorePassword($pswLength, $checkRadioRepeat, $useLetter, $useNumbe
                     <label for="pswlength">Lunghezza password</label>
                 </div>
                 <div class="col-auto">
-                    <input type="password" id="pswlength" class="form-control" name="pswlength" value="pswlength">
+                    <input type="number" id="pswlength" class="form-control" name="pswlength" value="pswlength" min="12" max="15">
                 </div>
                 <div class="row g-3 align-item-center justify-content-center">
                     <div class="col-auto">
