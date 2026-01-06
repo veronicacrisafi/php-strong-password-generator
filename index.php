@@ -50,7 +50,16 @@ function generatorePassword($pswLength, $checkRadioRepeat, $useLetter, $useNumbe
     if ($useSymbol) {
         $caratteriPossibili .= $symbol;
     }
+    //str_split serve per trasformare una stringa in un array, dove ogni elemento dell’array corrisponde a un singolo carattere della stringa
     $arrayCaratteri = str_split($caratteriPossibili);
+
+    $password = '';
+    for ($i = 0; $i < $pswLength; $i++) {
+        $indiceCasuale = random_int(0, count($arrayCaratteri) - 1);
+        $carattere = $arrayCaratteri[$indiceCasuale];
+        $password .= $carattere;
+    }
+    return $password;
 }
 ?>
 
@@ -89,11 +98,17 @@ function generatorePassword($pswLength, $checkRadioRepeat, $useLetter, $useNumbe
                     <div class="col-auto">
                         <!-- Per le checkradio è importante dare lo stesso name in quanto fanno parte della stessa scelta e l'utente può scegliere solo una delle due e così php riceve solo il valore selezionato-->
                         <div class="form-check">
-                            <input type="radio" class="form-check-input" name="checkradio" id="checkyes">
+                            <input type="radio" class="form-check-input" name="checkradio" id="checkyes" value="Sì">
+                            <?php
+                            $checkRipetizioneCaratteri = (isset($_GET['checkradio']) && $_GET['checkradio'] === 'Sì');
+                            ?>
                             <label for="checkyes" class="form-check-label">Sì</label>
                         </div>
                         <div class="form-check">
-                            <input type="radio" class="form-check-input" name="checkradio" id="checkno" checked>
+                            <input type="radio" class="form-check-input" name="checkradio" id="checkno" value="No">
+                            <?php
+                            $checkNonRipetizioneCaratteri = (isset($_GET['checkradio']) && $_GET['checkradio'] === 'No')
+                            ?>
                             <label for="checkno" class="form-check-label">No</label>
                         </div>
                         <!-- Per le checkbox non serve dare lo stesso name in quanto l'utente può dare scelte multiple in questo modo php riceve le varie scelte selezionate-->
@@ -135,6 +150,9 @@ function generatorePassword($pswLength, $checkRadioRepeat, $useLetter, $useNumbe
             </div>
             <?php
             $validazioneDati = validaCheckBox($selezionaLettere, $selezionaNumeri, $selezionaSimboli);
+            ?>
+            <?php
+
             ?>
         </form>
     </div>
