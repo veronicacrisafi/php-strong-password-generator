@@ -32,7 +32,7 @@ if (!empty($_GET)) {
     } elseif (!is_numeric($pswLength) || $pswLength < 12 || $pswLength > 15) {
         $errore = 'La lunghezza della password deve essere un numero tra 12 e 15.';
     }
-}
+};
 
 // qui !empty($_GET) controlla che i parametri in GET non siano vuoti
 // mentre empty($errore) controlla che non ci siano errori quindi che la variabile $errore sia vuota
@@ -107,7 +107,7 @@ function generatorePassword($pswLength, $checkRadioRepeat, $useLetter, $useNumbe
                     <label for="pswlength">Lunghezza password</label>
                 </div>
                 <div class="col-auto">
-                    <input type="number" id="pswlength" class="form-control" name="pswlength" value="pswlength" min="12" max="15">
+                    <input type="number" id="pswlength" class="form-control" name="pswlength" value="12" min="12" max="15">
                 </div>
                 <div class="row g-3 align-item-center justify-content-center">
                     <div class="col-auto">
@@ -163,7 +163,8 @@ function generatorePassword($pswLength, $checkRadioRepeat, $useLetter, $useNumbe
             <div class="row justify-content-center">
                 <div class="col-auto">
                     <button type="submit" class="btn btn-primary btn-sm">Invia</button>
-                    <button type="submit" class="btn btn-secondary btn-sm">Annulla</button>
+                    <!-- per il tasto annulla utilizzato il link che fa si che cliccandolo riporti alla pagina iniziale vuota -->
+                    <a href="index.php" class="btn btn-secondary btn-sm">Annulla</a>
                 </div>
             </div>
             <?php
