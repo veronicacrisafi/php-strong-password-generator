@@ -31,6 +31,9 @@ if (!empty($passwordGenerata) && empty($errore)) {
     echo '<div class="d-flex justify-content-center mt-3">';
     echo '<div class="alert alert-success">' . 'La tua password supersicura è: ' . $passwordGenerata . '</div>';
     echo '</div>';
+    echo '<div class="d-flex justify-content-center mt-3">';
+    echo '<a href = "./index.php" class="btn btn-secondary mt-2"> Torna al form </a>';
+    echo '</div>';
 }
 ?>
 <?php
