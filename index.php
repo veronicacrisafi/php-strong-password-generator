@@ -6,37 +6,8 @@ error_reporting(E_ALL);
 
 <?php
 require_once './functions.php';
+require_once './result.php';
 ?>
-
-<?php
-$errore = '';
-$selezionaLettere = isset($_GET['letter']) ? $_GET['letter'] : '';
-$selezionaNumeri = isset($_GET['number']) ? $_GET['number'] : '';
-$selezionaSimboli = isset($_GET['symbols']) ? $_GET['symbols'] : '';
-$pswLength = isset($_GET['pswlength']) ? $_GET['pswlength'] : '';
-$checkRipetizioneCaratteri = (isset($_GET['checkradio']) && $_GET['checkradio'] === 'Sì');
-$validazioneDati = validaCheckBox($selezionaLettere, $selezionaNumeri, $selezionaSimboli);
-
-// Validazione lunghezza password e presenza selezione checkbox
-//controllo con empty che è una funzione che guarda se una variabile è vuota o meno
-//controllo con is_numeric che è una funzione che guarda che l'utente abbia rispettato il range della lunghezza numerica
-if (!empty($_GET)) {
-    if (!$validazioneDati) {
-        $errore = 'Devi selezionare almeno una tipologia di caratteri!';
-    } elseif (!is_numeric($pswLength) || $pswLength < 12 || $pswLength > 15) {
-        $errore = 'La lunghezza della password deve essere un numero tra 12 e 15.';
-    }
-};
-
-// qui !empty($_GET) controlla che i parametri in GET non siano vuoti
-// mentre empty($errore) controlla che non ci siano errori quindi che la variabile $errore sia vuota
-if (!empty($_GET) && empty($errore)) {
-    $passwordGenerata = generatorePassword($pswLength, $checkRipetizioneCaratteri, !empty($selezionaLettere), !empty($selezionaNumeri), !empty($selezionaSimboli));
-}
-?>
-
-
-
 
 <!DOCTYPE html>
 <html lang="it">
@@ -57,7 +28,7 @@ if (!empty($_GET) && empty($errore)) {
             echo '<div class="alert alert-danger">' . $errore .  '</div>';
         }
         ?>
-        <form action="" method="GET">
+        <form action="./result.php" method="GET">
             <div class="row g-3 align-items-center justify-content-center">
                 <div class="col-auto">
                     <label for="pswlength">Lunghezza password</label>
@@ -127,11 +98,6 @@ if (!empty($_GET) && empty($errore)) {
             $validazioneDati = validaCheckBox($selezionaLettere, $selezionaNumeri, $selezionaSimboli);
             ?>
         </form>
-        <?php
-        if (!empty($passwordGenerata) && empty($errore)) {
-            echo '<div class= "alert alert-success mt-3">' . 'La tua password supersicura è: ' . $passwordGenerata . '</div>';
-        };
-        ?>
     </div>
 </body>
 
