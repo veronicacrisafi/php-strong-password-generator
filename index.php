@@ -5,7 +5,7 @@ error_reporting(E_ALL);
 ?>
 
 <?php
-require_once './function.php';
+require_once './functions.php';
 ?>
 
 <?php
