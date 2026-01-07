@@ -173,7 +173,7 @@ function generatorePassword($pswLength, $checkRadioRepeat, $useLetter, $useNumbe
         </form>
         <?php
         if (!empty($passwordGenerata) && empty($errore)) {
-            echo '<div class= "alert alert-success">' . 'La tua password supersicura è: ' . $passwordGenerata . '</div>';
+            echo '<div class= "alert alert-success mt-3">' . 'La tua password supersicura è: ' . $passwordGenerata . '</div>';
         };
         ?>
     </div>
