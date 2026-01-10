@@ -24,7 +24,11 @@ if (!empty($_GET)) {
 // mentre empty($errore) controlla che non ci siano errori quindi che la variabile $errore sia vuota
 if (!empty($_GET) && empty($errore)) {
     $passwordGenerata = generatorePassword($pswLength, $checkRipetizioneCaratteri, !empty($selezionaLettere), !empty($selezionaNumeri), !empty($selezionaSimboli));
+    if (empty($passwordGenerata)) {
+        $errore = 'Impossibile creare la password con i criteri selezionati!';
+    }
 }
+
 ?>
 <?php
 if (!empty($passwordGenerata) && empty($errore)) {
@@ -38,7 +42,11 @@ if (!empty($passwordGenerata) && empty($errore)) {
 ?>
 <?php
 if (!empty($errore)) {
+    echo '<div class="d-flex justify-content-center mt-3">';
     echo '<div class="alert alert-danger mt-3">' . $errore . '</div>';
+    echo '</div>';
+    echo '<div class="d-flex justify-content-center mt-3">';
     echo '<a href = "./index.php" class="btn btn-secondary mt-2"> Torna al form </a>';
+    echo '</div>';
 }
 ?>

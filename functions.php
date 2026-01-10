@@ -12,7 +12,7 @@ function generatorePassword($pswLength, $checkRadioRepeat, $useLetter, $useNumbe
 {
     $caratteriPossibili = '';
     $letter = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    $number = '123456789';
+    $number = '0123456789';
     $symbol = '!"#$%&\'()*+,-./:;<=>?@[]^_`{|}~';
     if ($useLetter) {
         $caratteriPossibili .=  $letter;
