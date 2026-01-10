@@ -24,7 +24,14 @@ if (!empty($_GET)) {
 // qui !empty($_GET) controlla che i parametri in GET non siano vuoti
 // mentre empty($errore) controlla che non ci siano errori quindi che la variabile $errore sia vuota
 if (!empty($_GET) && empty($errore)) {
-    $passwordGenerata = generatorePassword($pswLength, $checkRipetizioneCaratteri, !empty($selezionaLettereMinuscole), !empty($selezionaLettereMaiuscole), !empty($selezionaNumeri), !empty($selezionaSimboli));
+    $passwordGenerata = generatorePassword(
+        $pswLength,
+        $checkRipetizioneCaratteri,
+        !empty($selezionaLettereMinuscole),
+        !empty($selezionaLettereMaiuscole),
+        !empty($selezionaNumeri),
+        !empty($selezionaSimboli)
+    );
     if (empty($passwordGenerata)) {
         $errore = 'Impossibile creare la password con i criteri selezionati!';
     }
