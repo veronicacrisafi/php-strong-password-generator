@@ -1,21 +1,25 @@
 <?php
-function validaCheckBox($selezionaLettere, $selezionaNumeri, $selezionaSimboli)
+function validaCheckBox($selezionaLettereMinuscole, $selezionaLettereMaiuscole, $selezionaNumeri, $selezionaSimboli)
 {
-    if ($selezionaLettere || $selezionaNumeri || $selezionaSimboli) {
+    if ($selezionaLettereMinuscole || $selezionaLettereMaiuscole || $selezionaNumeri || $selezionaSimboli) {
         return true;
     }
     return false;
 }
 ?>
 <?php
-function generatorePassword($pswLength, $checkRadioRepeat, $useLetter, $useNumber, $useSymbol)
+function generatorePassword($pswLength, $checkRadioRepeat, $useLetterLowercase, $useLetterUppercase, $useNumber, $useSymbol)
 {
     $caratteriPossibili = '';
-    $letter = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $letterLowercase = 'abcdefghijklmnopqrstuvwxyz';
+    $letterUppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     $number = '0123456789';
     $symbol = '!"#$%&\'()*+,-./:;<=>?@[]^_`{|}~';
-    if ($useLetter) {
-        $caratteriPossibili .=  $letter;
+    if ($useLetterLowercase) {
+        $caratteriPossibili .=  $letterLowercase;
+    }
+    if ($useLetterUppercase) {
+        $caratteriPossibili .= $letterUppercase;
     }
     if ($useNumber) {
         $caratteriPossibili .= $number;

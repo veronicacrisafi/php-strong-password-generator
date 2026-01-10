@@ -58,12 +58,21 @@ require_once './result.php';
                         </div>
                         <!-- Per le checkbox non serve dare lo stesso name in quanto l'utente può dare scelte multiple in questo modo php riceve le varie scelte selezionate-->
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="letter" id="letter" name="letter" <?php if (!empty($selezionaLettere)) echo 'checked'; ?>>
+                            <input class="form-check-input" type="checkbox" value="letterLowercase" id="letterLowercase" name="letterLowercase" <?php if (!empty($selezionaLettere)) echo 'checked'; ?>>
                             <?php
-                            $selezionaLettere = isset($_GET['letter']) ? $_GET['letter'] : ''
+                            $selezionaLettereMinuscole = isset($_GET['letterLowercase']) ? $_GET['letterLowercase'] : '';
                             ?>
-                            <label class="form-check-label" for="letter">
-                                Lettere
+                            <label class="form-check-label" for="letterLowercase">
+                                Lettere minuscole
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="letterUppercase" id="letterUppercase" name="letterUppercase" <?php if (!empty($selezionaLettere)) echo 'checked'; ?>>
+                            <?php
+                            $selezionaLettereMaiuscole = isset($_GET['letterUppercase']) ? $_GET['letterUppercase'] : '';
+                            ?>
+                            <label class="form-check-label" for="letterUppercase">
+                                Lettere maiuscole
                             </label>
                         </div>
                         <div class="form-check">
@@ -95,7 +104,7 @@ require_once './result.php';
                 </div>
             </div>
             <?php
-            $validazioneDati = validaCheckBox($selezionaLettere, $selezionaNumeri, $selezionaSimboli);
+            $validazioneDati = validaCheckBox($selezionaLettereMinuscole, $selezionaLettereMaiuscole, $selezionaNumeri, $selezionaSimboli);
             ?>
         </form>
     </div>
