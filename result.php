@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once './functions.php';
 include_once './header.php';
 ?>
@@ -34,18 +35,21 @@ if (!empty($_GET) && empty($errore)) {
     );
     if (empty($passwordGenerata)) {
         $errore = 'Impossibile creare la password con i criteri selezionati!';
+    } else {
+        $_SESSION['password'] = $passwordGenerata;
     }
 }
 
 ?>
 <?php
-if (!empty($passwordGenerata) && empty($errore)) {
+if (!empty($_SESSION['password']) && empty($errore)) {
     echo '<div class="d-flex justify-content-center mt-3">';
-    echo '<div class="alert alert-success">' . 'La tua password supersicura è: ' . $passwordGenerata . '</div>';
+    echo '<div class="alert alert-success">' . 'La tua password supersicura è: ' . $_SESSION['password'] . '</div>';
     echo '</div>';
     echo '<div class="d-flex justify-content-center mt-3">';
     echo '<a href = "./index.php" class="btn btn-secondary mt-2"> Torna al form </a>';
     echo '</div>';
+    unset($_SESSION['password']);
 }
 ?>
 <?php
